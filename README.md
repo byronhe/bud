@@ -517,7 +517,7 @@ openssl genrsa -out server.key 2048
 ```
 
 To generate the public certs, you'll need to buy an SSL cert from the provider
-of your choice. They'll ask you to upload your key file, and the `.crt` file
+of your choice. They'll ask you to upload your `.csr` file
 generated below:
 
 ```bash
@@ -530,7 +530,7 @@ openssl req -new -key server.key -out server.csr
 openssl x509 -req -days 9999 -in server.csr -signkey server.key -out server.crt
 ```
 
-You'll need to upload the .crt and .key files to the cert provider. What you want back
+You'll need to upload .csr file to the cert provider. What you want back
 from them is a .pem file that has their entire cert chain. Then in your bud
 config set it like this:
 
